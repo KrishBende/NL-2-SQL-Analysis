@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NLP2SQL Interface</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>SQL Database Querying using Natural Language</h1>
+                <p>Ask questions about your database in natural language and get SQL queries, results, and explanations.</p>
+                <div class="tech-icons">
+                    <i class="fas fa-brain"></i>
+                    <i class="fas fa-code"></i>
+                    <i class="fas fa-magic"></i>
+                </div>
+            </div>
+        </header>
+        
+        <main>
+            <!-- Feature highlights for LinkedIn showcase -->
+            <section class="features-section">
+                <div class="feature-card">
+                    <i class="fas fa-comments feature-icon"></i>
+                    <h3>Natural Language Processing</h3>
+                    <p>Human language to SQL queries with AI</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-bolt feature-icon"></i>
+                    <h3>Instant Results</h3>
+                    <p>Quick results using PySpark</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-lightbulb feature-icon"></i>
+                    <h3>Smart Explanations</h3>
+                    <p>Understand your query</p>
+                </div>
+            </section>
+            
+            <section class="connection-section">
+                <div class="connection-toggle">
+                    <button id="connectionToggle" class="connection-btn" title="Database Connection Settings">
+                        <i class="fas fa-plug"></i> Database Configuration
+                    </button>
+                </div>
+                
+                <div id="connectionForm" class="connection-form hidden">
+                    <div class="connection-inputs">
+                        <div class="connection-row">
+                            <input type="text" id="dbHost" placeholder="Host" class="conn-input" value="localhost">
+                            <input type="text" id="dbUser" placeholder="User" class="conn-input" value="root">
+                        </div>
+                        <div class="connection-row">
+                            <input type="password" id="dbPassword" placeholder="Password" class="conn-input">
+                            <input type="text" id="dbName" placeholder="Database" class="conn-input">
+                        </div>
+                    </div>
+                    <button id="saveConnection" class="save-conn-btn">
+                        <i class="fas fa-save"></i> Save
+                    </button>
+                </div>
+            </section>
+            
+            <section class="input-section">
+                <form id="queryForm">
+                    <label for="userQuery"><i class="fas fa-question-circle"></i> Enter your question about the database:</label>
+                    <textarea 
+                        id="userQuery" 
+                        name="query" 
+                        rows="3" 
+                        placeholder="Example: 'Show me all customers from the USA with their contact information'"
+                        required
+                    ></textarea>
+                    <button type="submit" id="submitBtn"><i class="fas fa-bolt"></i> Generate SQL Query</button>
+                </form>
+            </section>
+            
+            <section class="results-section">
+                <div id="loadingIndicator" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>Processing your query... <i class="fas fa-cogs fa-spin"></i></p>
+                </div>
+                
+                <div id="errorContainer" class="error-message hidden"></div>
+                
+                <div id="resultsContainer" class="results-container hidden">
+                    <div class="result-section">
+                        <h3><i class="fas fa-user"></i> Your Question:</h3>
+                        <div id="userQuestion" class="question-display"></div>
+                    </div>
+                    
+                    <div class="result-section">
+                        <h3><i class="fas fa-code"></i> Generated SQL Query:</h3>
+                        <pre id="sqlQuery" class="sql-display"></pre>
+                    </div>
+                    
+                    <div class="result-section">
+                        <h3><i class="fas fa-table"></i> Query Results:</h3>
+                        <div id="queryResults" class="results-table"></div>
+                    </div>
+                    
+                    <div class="result-section">
+                        <h3><i class="fas fa-lightbulb"></i> Explanation:</h3>
+                        <div id="explanation" class="explanation-display"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>Built for AI and Data Enthusiasts</p>
+            <p class="tech-footer">NLP-2-SQL • Natural Language Processing • SQL Generation</p>
+        </footer>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
